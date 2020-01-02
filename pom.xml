@@ -5,15 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>tech.sqlclub</groupId>
-    <artifactId>exporter-daemon</artifactId>
+    <artifactId>metrics-exporter</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
-    <modules>
 
+    <modules>
+        <module>node-exporter</module>
     </modules>
 
     <name>Exporter Daemon Parent POM</name>
-    <url>https://github.com/bebee4java/exporter-daemon</url>
+    <url>https://github.com/bebee4java/metrics-exporter</url>
     <description>Collect and push various metrics for sqlalarm.</description>
 
     <licenses>
