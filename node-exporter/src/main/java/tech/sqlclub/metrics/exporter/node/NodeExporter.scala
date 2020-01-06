@@ -1,15 +1,15 @@
-package tech.sqlclub.metrics.exporter
+package tech.sqlclub.metrics.exporter.node
 
 import org.hyperic.sigar.{OperatingSystem, Sigar}
-import tech.sqlclub.common.utils.ConfigUtils
-import tech.sqlclub.metrics.exporter.node._
-
+import tech.sqlclub.common.context.YamlContext
+import tech.sqlclub.metrics.exporter.{Exporter, Metrics}
 
 /**
-  *
+  * 采集机器的(CPU/MEM/NET etc.)各类指标
   * Created by songgr on 2020/01/02.
   */
-object NodeExporter extends Exporter {
+
+class NodeExporter extends Exporter {
  private lazy val sigar = addDllReturnSigar
 
  private var os:OperatingSystem = _
@@ -28,7 +28,7 @@ object NodeExporter extends Exporter {
  val KB = (value:Long) => value/1024d
  val MB = (value:Long) => value/1048576d
  val GB = (value:Long) => value/1073741824d
- lazy val unit = ConfigUtils.getStringValue(Constants.memUnit, "GB")
+ lazy val unit = YamlContext.getStringValue(Constants.memUnit, "GB")
  lazy val sizeUnit = {
   unit match {
    case "GB" => GB
@@ -64,4 +64,3 @@ object NodeExporter extends Exporter {
    NodeMetrics(node, cpu, mem, swap)
   }
 }
-

@@ -1,0 +1,14 @@
+quartz:
+  org.quartz.scheduler.instanceName: QuartzScheduler
+  org.quartz.scheduler.instanceId: AUTO
+  org.quartz.scheduler.rmi.export: false
+  org.quartz.scheduler.rmi.proxy: false
+  org.quartz.threadPool.class: org.quartz.simpl.SimpleThreadPool
+  org.quartz.threadPool.threadCount: 3
+  org.quartz.jobStore.class: org.quartz.simpl.RAMJobStore
+  org.quartz.scheduler.skipUpdateCheck: true
+
+quartz-job:
+- name:  NodeExporter
+  class: tech.sqlclub.metrics.exporter.node.NodeExporter
+  cron: 0/10 * * * * ?
