@@ -9,6 +9,6 @@ quartz:
   org.quartz.scheduler.skipUpdateCheck: true
 
 quartz-job:
-- name:  NodeExporter
-  class: tech.sqlclub.metrics.exporter.node.NodeExporter
-  cron: 0/10 * * * * ?
+  - name:  NodeExporter
+    class: tech.sqlclub.metrics.exporter.node.NodeExporter
+    cron: 0/10 * * * * ?
